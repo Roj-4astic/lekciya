@@ -1,0 +1,21 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Введение}{4}{0}{1}
+\beamer@sectionintoc {2}{Начало работы}{6}{0}{2}
+\beamer@sectionintoc {3}{Ввод формул и их нумерация}{10}{0}{3}
+\beamer@sectionintoc {4}{Работа с таблицами и листингом}{12}{0}{4}
+\beamer@sectionintoc {5}{Работа с графикой и блок\nobreak -схемами}{14}{0}{5}
+\beamer@sectionintoc {6}{Заключение}{25}{0}{6}
+\babel@toc {english}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {russian}{}\relax 

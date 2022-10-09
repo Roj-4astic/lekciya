@@ -1,0 +1,27 @@
+﻿%% настройки геометрии
+\RequirePackage{xkeyval}
+\RequirePackage{geometry}
+
+\ExecuteOptions{a4paper,12pt,twoside,onecolumn,final,openany}
+\ProcessOptions*\relax
+
+\usepackage{bm} % определяет команду \bm{<текст>} дающее полужирное начертание тексту <текст> в аргументе
+
+\usepackage{texnames}
+
+\usepackage{wrapfig} % позволяет обернуть текст вокруг рисунков или таблиц
+
+\def\bibnamefont{\textit} % задаёт курсив Ф.И.О. авторов в списке литературы
+
+\usepackage{calc}
+\usepackage{soulutf8} % пакет soul с поддержкой utf8: позволяет быстро форматировать текст, например выделить командой \hl
+
+
+% \usepackage[nodayofweek]{datetime}
+\usepackage[24hr]{datetime}
+
+\nocite{*} %  включает в спиcок литературы все записи что без ссылок в тектсе через \cite
+
+\usepackage{afterpage}
+\usepackage{subfigure}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}

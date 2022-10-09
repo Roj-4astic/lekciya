@@ -1,0 +1,65 @@
+﻿\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+\ProvideTextCommandDefault{\cyrdash}{\iflanguage{russian}{\hbox
+  to.8em{--\hss--}}{\textemdash}}
+\providecommand*{\BibDash}{\ifdim\lastskip>0pt\unskip\nobreak\hskip.2em plus
+  0.1em\fi
+\cyrdash\hskip.2em plus 0.1em\ignorespaces}
+\renewcommand{\newblock}{\ignorespaces}
+
+\bibitem{knut:book:1984:01}
+\selectlanguageifdefined{english}
+\BibEmph{Knuth~D.~E.} The \TeX book. \BibDash
+\newblock Reading, Massachusetts~: Addison-Wesley Publishing Company, 1984.
+
+\bibitem{axiezer:book:1981:01}
+\selectlanguageifdefined{russian}
+\BibEmph{Ахиезер~А.~И., Берестецкий~В.~Б.} Квантовая
+  электродинамика~/ {\cyr\CYRP\cyro\cyrd\ \cyrr\cyre\cyrd.}\
+  Л.~П.~Русаковой. \BibDash
+\newblock 4-е {\cyr\cyri\cyrz\cyrd.} \BibDash
+\newblock М.~: Наука, 1981.
+
+\bibitem{mkrtumyan:tech:2010:01}
+\selectlanguageifdefined{russian}
+ГОСТ 19.701–90 (ИСО 5807–85) <<Единая система
+  программной документации>> : Сб. ГОСТов.~:
+  {\cyr\CYRO\cyrt\cyrch\cyre\cyrt}~: МКС 01.080.50~/
+  Стандартинформ~; {\cyr\cyri\cyrs\cyrp\cyro\cyrl\cyrn.}:
+  А.~А.~Мкртумян, А.~Л.~Щерс, А.~Н.~Сироткин
+  {\cyr\cyri~\cyrd\cyrr.} \BibDash
+\newblock М.~: 2010. \BibDash янв.
+
+\bibitem{gelfand:book:1972:09}
+\selectlanguageifdefined{russian}
+\BibEmph{Гельфанд~И.~М., Минлос~Р.~А., Шапиро~З.~Я.}
+  Представление группы вращений и группы
+  Лоренца, их применения. \BibDash
+\newblock М.~: Физматгиз, 1972.
+
+\bibitem{knut:book:1993:01}
+\selectlanguageifdefined{russian}
+\BibEmph{Кнут~Д~Е.} Все про \TeX. \BibDash
+\newblock Протвино~: RDTeX, 1993.
+
+\bibitem{nasyrov:book:2019:01}
+\selectlanguageifdefined{russian}
+\BibEmph{Насыров~В.~В.} Пакеты прикладных
+  программ для физиков: \LaTeX\ : учебное
+  пособие. \BibDash
+\newblock Хабаровск~: Изд-во Тихоокеан. гос.
+  ун-та, 2019.
+
+\bibitem{shnejvajs:book:2016:01}
+\selectlanguageifdefined{russian}
+\BibEmph{Шнейвайс~А.~Б.} Азы {\scshape GNUPLOT}а. \BibDash
+\newblock СПб.~: Изд-во СПбГУ, 2016.
+
+\end{thebibliography}

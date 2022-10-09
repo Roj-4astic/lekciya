@@ -1,0 +1,86 @@
+﻿\ifx\pstmode\undefined
+\else
+    \setbeamertemplate{navigation symbols}{}
+\fi
+
+\ifdefined\withnotes
+	\usepackage{pgfpages}
+
+	\ifdefined\onlynotes
+	\setbeameroption{show only notes}
+	\setbeamertemplate{note page}[compress]
+	\pgfpagesuselayout{resize to}[a4paper,border shrink=5mm,landscape]
+	\else
+	\setbeameroption{show notes}
+	\setbeamertemplate{note page}[plain]
+	\pgfpagesuselayout{8 on 1}[a4paper,border shrink=5mm]
+	\fi
+
+	% Версия для печати
+	\ifdefined\printable
+	  \usecolortheme{dove}
+	  \setbeamertemplate{navigation symbols}{}
+	  \setbeamercolor{note page}{bg=white}
+	  \setbeamercolor{note title}{bg=white}
+	  \setbeamercolor{note date}{bg=white}
+	\fi
+
+	% http://tex.stackexchange.com/questions/288408/beamer-show-notes-on-second-screen-with-xelatex-and-atbeginsection
+	\ifthenelse{\boolean{xetex}}{%
+	  \makeatletter
+	  \def\beamer@framenotesbegin{% at beginning of slide
+		 \usebeamercolor[fg]{normal text}
+		 \gdef\beamer@noteitems{}%
+		 \gdef\beamer@notes{}%
+	  }
+	  \makeatother
+	}{}
+\else\fi
+
+\ifdefined\handoutwithnotes
+	\usepackage{handoutWithNotes}
+	\pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
+\else\fi
+
+\ifdefined\poster
+	\mode<presentation> {
+		 \usetheme{PFU}				% Название темы оформления для постера
+		 \setbeamertemplate{navigation symbols}{}	% Убираем навигационные символы
+	}
+
+	\usepackage{ragged2e}
+	\boldmath			% Математические формулы будут полужирными, чтоб в глаза било
+
+	%\usepackage[orientation=album,size=a0,scale=1.4,debug]{beamerposter}                       	% e.g. for DIN-A0 poster
+	%\usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}                  	% e.g. for DIN-A1 poster, with optional grid and debug output
+	%\usepackage[size=custom,width=200,height=120,scale=2,debug]{beamerposter}                     	% e.g. for custom size poster
+	%\usepackage[orientation=portrait,size=a0,scale=1.0,printer=rwth-glossy-uv.df]{beamerposter}   	% e.g. for DIN-A0 poster with rwth-glossy-uv printer check
+	%\usepackage[orientation=album,size=a0,scale=1.4]{beamerposter}
+	\usepackage[orientation=portrait,size=a1,scale=1.0]{beamerposter}
+\else\fi
+
+\usepackage{pifont}
+
+%% настройки геометрии
+%\RequirePackage{xkeyval}
+
+\usepackage{bm} % определяет команду \bm{<текст>} дающее полужирное начертание тексту <текст> в аргументе
+
+\usepackage{texnames}
+
+\usepackage{wrapfig} % позволяет обернуть текст вокруг рисунков или таблиц
+
+\def\bibnamefont{\textit} % задаёт курсив Ф.И.О. авторов в списке литературы
+
+\usepackage{calc}
+\usepackage{soulutf8} % пакет soul с поддержкой utf8: позволяет быстро форматировать текст, например выделить командой \hl
+
+
+% \usepackage[nodayofweek]{datetime}
+\usepackage[24hr]{datetime}
+
+\nocite{*} %  включает в спиcок литературы все записи что без ссылок в тектсе через \cite
+
+\usepackage{afterpage}
+\usepackage{subfigure}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}

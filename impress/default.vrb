@@ -1,0 +1,12 @@
+\label{frame:literatura}
+  \frametitle{Список литературы}
+%    \vspace{\headheight}
+%    \vspace*{-5.5ex plus 1fill}
+%    {\centering\bfseries%
+%       \large\underline{Ввод формул и их нумерация} \\
+%    }
+%    \medskip
+	{\footnotesize
+		% \bibliographystyle{gost7184}
+		\bibliography{bib/main}
+	}
