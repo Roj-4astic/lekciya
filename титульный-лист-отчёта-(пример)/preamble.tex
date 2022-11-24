@@ -1,0 +1,139 @@
+﻿\documentclass[psamsfonts, intlimits, sumlimits, namelimits, 14pt, a4paper]{extarticle}
+\usepackage[left = 3.0cm, right = 1.5cm, top = 2.0cm, bottom = 2.0cm]{geometry} % геометрия страницы, в т.ч. поля
+
+\usepackage{caption} % поддержка подписей рисунков и т.д.
+
+\usepackage[T2A]{fontenc} % распознование кодировки текста в tex-файле
+\usepackage[utf8]{inputenc}% распознование шрифтов
+\usepackage[english, main=russian]{babel}% пакет поддержки орфографий
+\usepackage{tempora} %пакет шрифта Tempora
+
+\usepackage{etex}
+
+% расширенное управление переносом слов, разделенных пунктиром
+\usepackage[shortcuts]{extdash}
+% поддержка настроек междустрочного интервала
+\usepackage{setspace}
+% Настройка сносок
+\usepackage[perpage,bottom,multiple,stable]{footmisc}
+
+%% Пакеты для гипертекста
+\RequirePackage{color}
+\usepackage{hyperref} % обширная поддержка гипертекста
+\hypersetup{backref,
+% colorlinks=false,
+linktoc=all
+}
+\hypersetup{pdfborder=0 0 0}
+\hypersetup{pdfencoding=auto}
+
+%% Расширенная математика
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+
+\usepackage{accents} % пользовательские акценты
+\usepackage{cmap} % предоставляет таблицы сопоставления символов для PDF
+\usepackage{textcomp} % поддержка шрифтов Text Companion
+\usepackage{mathtext} % для "прозрачного" использования кириллических букв в формулах
+
+\usepackage{mathtools}
+\mathtoolsset{
+showonlyrefs=true, % нумеровать только формулы, на которых есть ссылки
+mathic=true,
+}
+
+\allowdisplaybreaks
+
+% Поддержка перечислений и списков
+\usepackage{paralist}
+% \usepackage{enumitem} % не совместим с пакетом paralist
+% см. о разнице кратко https://tex.stackexchange.com/questions/18411/what-are-the-differences-between-using-paralist-vs-enumitem
+
+%% Многостраничные таблицы
+% \usepackage{longtable}
+% \usepackage{lscape}
+% \usepackage{makecell}
+% \usepackage{multirow}
+% \usepackage{tabularx}
+% или
+\usepackage{tabularray}
+\UseTblrLibrary{functional}
+\UseTblrLibrary{diagbox}
+
+\DefTblrTemplate{contfoot-text}{russian}{Продолжение на следующей странице}
+\SetTblrTemplate{contfoot-text}{russian}
+\DefTblrTemplate{conthead-text}{russian}{(Продолжение)}
+\SetTblrTemplate{conthead-text}{russian}
+
+
+%% Работа с графикой
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{epic}
+\usepackage{rotating}
+
+\usepackage[shell, subfolder, cleanup]{gnuplottex}
+\def\gnuplotexe{/usr/bin/gnuplot}
+% \def\gnuplotexe{C:/Program\ Files/gnuplot/bin/gnuplot.exe}
+
+%% Путь к рисункам
+\graphicspath{{images}{gnuplottex}}
+
+%% Обработка текста в eps-файлах
+\usepackage[scanall]{psfrag}
+
+%% обработка блок-схем
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes, graphs, automata, positioning}
+
+%% Пакеты для библиографии
+\usepackage{cite}%
+% \usepackage{gost7184}
+% \bibliographystyle{gost7184}
+% \bibliographystyle{ugost2003s}
+\bibliographystyle{gost2008ls}
+% \bibliographystyle{utf8gost780u}
+%\renewcommand{\bibname}{Литература} % если класс book или report
+\renewcommand{\refname}{Литература} % если класс article
+
+%% Пакеты для листингов
+%% Расширеное окружение verbatim
+\usepackage{fancyvrb}
+\usepackage{url}
+
+% Наряду, или вместо verbatim можно использовать более специализированный.
+% Пакет listings
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstset{%
+    showstringspaces=false,
+    numbers=left,
+%    numberstyle=\tiny,
+%    upquote=false,
+    keepspaces=true,
+    columns=flexible,
+    basicstyle=\footnotesize\ttfamily,%
+    breaklines=true,%
+    breakatwhitespace=true,%
+    postbreak=\space,%
+    prebreak={\mbox{\quad$\hookleftarrow$}},%
+}
+
+%\ifthenelse{\boolean{luatex}\OR\boolean{xetex}}{}{%
+%    \lstset{inputencoding=utf8/koi8-r}}
+
+\lstloadlanguages{C,make,bash,[x86masm]Assembler,[LaTeX]TeX, [08]Fortran, [95]Fortran, Gnuplot}
+
+\usepackage{indentfirst} % отступ первой строки каждого раздела по умолчанию
+\renewcommand\baselinestretch{1.5} % междустроный интервал всего документа
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% TeX-master: "./default"
+%%% End:

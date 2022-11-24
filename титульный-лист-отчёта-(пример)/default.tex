@@ -1,0 +1,603 @@
+﻿\include{preamble}
+
+\input{define}
+
+\begin{document}
+
+%% титульная часть
+
+\begin{titlepage}
+   {\centering
+	   \MakeUppercase{%
+		  {\footnotesize
+			 Федеральное государственное автономное образовательное учреждение\\[-2.75ex]
+			 высшего образования
+		  }\\[0.2cm]
+		  {\bfseries Российский университет дружбы народов}
+	   }\\[0.75cm]
+	   {\itshape\small
+		  Факультет физико-математических и естественных наук\\[-1.5ex]
+		  {\bfseries Институт физических исследований и технологий}\\[-1.5ex]
+		  Направление «Физика»\\[1cm]
+	   }
+	   \MakeUppercase{%
+		  \bfseries
+		  {\large Отчёт}\\[0.75cm]
+		  по лабораторной работе №1
+	   }\\[1.5cm]
+	   Обработка результатов измерений, их погрешностей\\[-1.5ex]
+	   и построение научной графики\\[-0.2cm]
+	   {\footnotesize по курсу:}\\[-0.2cm]
+	   {\bfseries Базовые пакеты}\\[-0.2cm]
+	   {\footnotesize Раздел:}\\[-0.2cm]
+	   {\normalsize Оформление научно-исследовательских материалов}%
+   }\\[1.5cm]
+   {\raggedleft\normalsize
+	  Выполнил(а) студент(ка) группы НФЗбд-01-20\\[0.5cm]
+	  Иванов(а)~Александр(а)\\
+   }
+   \vfill
+   {\centering\normalsize%\bfseries
+      Москва\\[-1.5ex]
+	  \the\year{}\\
+   }
+\end{titlepage}
+
+\stepcounter{page}
+
+\tableofcontents
+
+\newpage
+
+%% цель работы
+
+{\bfseries\itshape Цель работы:}
+\label{sec:work_goal}
+\addcontentsline{toc}{section}{Цель работы~\dotfill~\hspace*{-0.5em}}
+Рассмотреть некоторые возможности языка программирования \LaTeX\ для подготовки отчётов, научных статей и др. Привести примеры с небольшим пояснением, в том числе работа с математическими формулами, графиками, таблицами, листингом и блок\nobreak-схемами.
+
+%% оборудование
+
+{\bfseries\itshape Оборудование:}
+\label{sec:equipments}
+\addcontentsline{toc}{section}{Оборудование~\dotfill~\hspace*{-0.5em}}
+Издательская система \LaTeXe, Gnuplot.
+
+%% теоретическая часть
+
+{\bfseries\itshape Теоретическая часть:}
+\label{sec:theoretic_part}
+\addcontentsline{toc}{section}{Теоретическая часть~\dotfill~\hspace*{-0.5em}}
+\LaTeX\ "--- научная издательская система, в первую очередь предназначенная для подготовки научных публикаций, что выражается в наличии развитого аппарата для быстрого набора математических выражений, диаграмм, физических и химических формул, средств внедрения в текст графических файлов~\cite{nasyrov:book:2019:01}.
+
+В \LaTeX\ очень удобно реализован процесс нумерации объектов: формул, рисунков, таблиц, литературы и т.д., основанный на использовании уникальных меток, присваиваемых пользователем соответствующим объектам. Эта особенность системы особенно ценится пользователями системы, так как добавление или удаление в тексте документа объекта, нарушающего сквозную нумерацию, например, формулы, не требует ручной корректировки нумерации по всему документу, всю рутинную работу \LaTeX\ выполнит автоматически в процессе компиляции окончательного файла документа.
+
+Ещё одно существенное преимущество \LaTeX\ "--- это особая структура документа, позволяющая пользователю иметь уверенность, что при наборе текста и последующем редактировании не собьется форматирование: формулы, рисунки, таблицы и фрагменты текста останутся такими же и в тех жеместах документа. Эту особенность используют редакции серьёзных научных изданий, широко применяя \LaTeX\ при верстке журналов, когда к статьям,набранным разными авторами, применяется одинаковый набор стилевых инструкций, автоматически приводящий эти статьи к единому оформлению.
+
+Как издательская система \LaTeX\ представляет собой набор компьютерных программ (пакетов), однако с точки зрения конечного пользователя этой системы \LaTeX\ "--- это свод правил и команд, по которым исходный текст документа преобразуется в окончательную печатную версию, в этом смысле \LaTeX\ "--- это язык программирования, которым пользователь системы должен владеть. Первую версию \LaTeX\ создал Лесли Лэмпорт, который в 1985 г. представил набор макросов (макрокоманд) как надстройку над системой подготовки печатной документации \TeX, разработанной Дональдом Кнутомв 1979 г. Система команд \TeX\ фактически была первым языком разметки гипертекста, а её исполняемая программа "--- «tex.exe», выполнявшая преобразование размеченного текста в документ, пригодный для печати, была одной из первых программ парсеров (parser). Первый перевод~\cite{knut:book:1993:01} классической книги Дональда Кнута «The \TeX\ book»~\cite{knut:book:1984:01} c наиболее полной информацией об этой системе, опубликован в России в 1993 г.
+
+Язык \TeX\ относится к языкам программирования низкого уровня и достаточно сложен в использовании, поэтому, несмотря на то, что \TeX\ до сих пор общепризнанно является наиболее качественной системой подготовки научных печатных публикаций, «чистый» \TeX\ сейчас используется главным образом при разработке классов и пакетов для \LaTeX.
+
+Мы аоспользуемся этой издатетельской системой в редакции \LaTeXe.
+
+%% результаты
+
+{\bfseries\itshape Результаты:}
+\label{sec:results}
+\addcontentsline{toc}{section}{Результаты~\dotfill~\hspace*{-0.5em}}
+
+Для начала следует установить \TeX-систему, настоятельно рекомендуется поставить \texttt{texlive} (есть на трёх платформах \textit{linux, windows, mac},~см.~\url{https://tug.org/texlive}), представляющий собой самый полный набор tex\nobreak-программ\footnote{В отличии от \texttt{miktex}, \textbf{не рекомендуется} ставить последний, как например в~\cite{nasyrov:book:2019:01}} и возможности настройки.
+
+Исходный код представляет собой текст набранный, как упоминалось, на специальном языке, сохраннёный в обычном тектовом файле с расширением «tex», например \texttt{default.tex}
+
+Для того чтобы скомпилировать tex\nobreak-файл, необходимо вызвать в консоли (терминале, командной строке) программу \texttt{pdflatex} и передать в качестве параметра имя файла (расширение указывать необязательно), также рекомендуется включать режим синхронизации с исходным кодом ключом \texttt{synctex}. Тогда \verb|pdflatex --synctex=1 default|.
+
+Любой \LaTeX овский (или \TeX овский) документ состоит из двух частей: из преамбулы (\texttt{preambule}) и тела документа (заключённого в окружении \texttt{document}). Вся стилистика, то есть правила форматирования тела документа задаются набором команд из которых и образована преамбула документа. Например для начала работы с мультиязычным вводом (русский и английский), вводом математических формул и вставки графики достаточно в преамбуде подключить всего несколько пакетов:
+\begin{Verbatim}[frame = single, label = {Пример tex\nobreak-файла \LaTeXовского документа}, fontfamily = courier, tabsize = 3, numbers = left, gobble=1]
+	% преамбула документа
+	\documentclass[12pt,a4paper]{article}
+	\usepackage[left=3.0cm, right=1.5cm, top=2.0cm,
+		bottom=2.0cm]{geometry}	% геометрия страницы, в т.ч. поля
+	\usepackage[utf8]{inputenc}	% распознование кодировки текста в tex-файле
+	\usepackage[T2A]{fontenc} % распознование шрифтов
+	\usepackage[english, main=russian]{babel}	% пакет поддержки орфографий
+	\usepackage{amsmath,amsfonts,amssymb} % пакеты ввода матформул
+	\usepackage{graphicx}% пакеты поддержки вставки рисунков
+
+	\begin{document}
+		% тело документа
+		{\selectlanguage{russian}
+		Здесь может будь ваш собственный текст.
+		} % END \selectlanguage
+
+		{\selectlanguage{english}
+		Your own text can be here.
+		} % END \selectlanguage
+	\end{document}
+\end{Verbatim}
+Преамбула всегда начинается командой:
+
+\verb|\documentclass[<параметры_класса_документа>]{<имя_класса_документа>}|;
+
+\noindent однако рекомендуется использовать преамбулу в искодном tex\nobreak-файле данного документа, при этом подключаемый файл \texttt{define.tex} командой \textsc{include}: \verb|\include{define}|; необязателен.
+
+Отметим, что фигурные скобки \textsc{\{ \}} у команд отвечают за обязательные параметры, квадратные \textsc{[ ]} "--- за необязательные. Например, любое окружение в \LaTeX\ вводится командами \textsc{begin} и \textsc{end}: \verb|\begin{<имя_окружения>}| \ldots \verb|\end{<имя_окружения>}|.
+Фигурные скобки используются также для выделения объекта, например,для указаные области действия некоторых команд; допустим, используя команду \textsc{bfseries} или \textsc{itshape} чтобы изменить начернатие текста на {\bfseries полужирное} или {\itshape курсивное} соответствено, впишем их внутри фигурных скобок, тогда действие этих команд будет ограничено в пределах данных скобок: \verb|{\bfseries полужирный текст}|, \verb|{\itshape курсивный текст}|. Важно помнить, что язык \TeX\ "--- регистрозависимый.
+
+Подробнее введение в \LaTeX\ см.~в~\cite{nasyrov:book:2019:01}.
+
+Допустим, мы хотим ввести уравнения Максвелла в переменных Майорана \\ $\xi = E + i H$ и $\eta = E - i H$ для электромагнитного поля вне источников. Обратим внимание что строчные формулы для переменных $\xi$ и $\eta$ вводятся в {\itshape математической моде}, для входа в которую используется символ \$ (доллара). Для выхода из неё, возвращаясь в {\itshape текстовую моду}, повторно вводится символ \$. Уравнения же введём в виде «формулы-выключки» (на выделенной строке), используя окружение \textsc{equation}:
+
+\hl{Источник:}
+
+\begin{Verbatim}[frame = single, label = {Пример окружения \textsc{equation}}, fontfamily = courier, tabsize = 3, numbers = left, gobble=1]
+	\begin{equation}
+		\label{eq:uravneniya_maksvella_v_peremennyx_majorana}
+		\begin{cases}
+			\frac{\partial}{\partial t} \xi = (s,\nabla) \xi , & \operatorname{div} \xi = 0 , \\
+			\frac{\partial}{\partial t} \eta = (s,\nabla) \eta , & \operatorname{div} \eta = 0 ,
+		\end{cases}
+	\end{equation}
+\end{Verbatim}
+
+\hl{Вывод:}
+
+\begin{equation}
+	\label{eq:uravneniya_maksvella_v_peremennyx_majorana}
+	\begin{cases}
+		\frac{\partial}{\partial t} \xi = (s,\nabla) \xi , & \operatorname{div} \xi = 0 , \\
+		\frac{\partial}{\partial t} \eta = (s,\nabla) \eta , & \operatorname{div} \eta = 0 ,
+	\end{cases}
+\end{equation}
+где $s$ - оператор спина фотона~(см.~\cite{axiezer:book:1981:01}), представляющий собой вектор-матрицу со слагающими $s_{j} = i A_{j}$ $\forall j =\overline{1,3}$. Здесь $A_{j}$ "--- матрицы бесконечно малых поворотов вокруг соответствующих осей трёхмерного евклидового пространства~\cite{gelfand:book:1972:09}.
+
+Нумерация формул автоматическая, и согласно установке в преамбуле, нумеруются те формулы на которые есть хотя бы одна ссылка в тексте. Прежде нам необходимо установить \textit{уникальную метку} через команду \textsc{label} в качестве её аргумента. Далее чтобы сослаться на метку достаточно воспользоваться командой \textsc{ref}, но поскольку мы хотим сослаться на формулу, воспользуемся специально отведённой для этого командой \textsc{eqref}. Для уравнений выше мы напишем:
+
+\verb|\eqref{eq:uravneniya_maksvella_v_peremennyx_majorana}|,
+
+\noindent где "eq" обозначает то что мы ссылаемся на объект окружения \textsc{equation}, затем следует имя метки после ":". Рекомендуется следовать этому регламенту. Разница между командами \textsc{ref} и \textsc{eqref} состоит в том что последняя выводить метку (номер) в круглых скобках. Так отметим что выражения справа в~\eqref{eq:uravneniya_maksvella_v_peremennyx_majorana} представляют собой специальные условия на дивергенцию решений уравнений Максвелла.
+
+Отметим что «формулы-выключки» можно также ввести заключив между "\verb|\[|" и "\verb|\]|", но нумеровать такие формулы невозможно с помощью команды \textsc{label}, при этом в \LaTeX\ сохраняется \TeX овский вариант ввода таких формул, а именно заключив описание формулы между "\$\$"\ и "\$\$".
+
+Нам необходимо ввести и оформить таблицу. Для этого можно подключать совокупность пакетов (см.~преамбулу данного документа) по необходимости, однако мы здесь рассмотрим один мощный пакет \textsc{tabularray}, например, мы хотим оформить большую таблицу на несколько страниц следующим образом:
+
+\hl{Источник:}
+
+%\lstset{language = [LaTeX]TeX, inputencoding = utf8, frame = none, tabsize = 3, numbers = left, numbersep = 6pt, gobble=1}%
+%\begin{lstlisting}
+\begin{Verbatim}[frame = single, label = {Пример окружения \textsc{longtblr}}, fontfamily = courier, tabsize = 3, numbers = left, gobble=1]
+	\begin{longtblr}[
+	% 	theme = fancy,
+		caption = {Большая таблица, но на самом деле короткая.},
+		entry = {Большая короткая таблица},
+		label = {tblr:bolshaya_tablica_no_na_samom_dele_korotkaya},
+		note{a} = {Это первая сноска.},
+		note{$\dag$} = {Это вторая длинная сноска.},
+		remark{Примечание} = {Некоторые общие примечания.},
+		remark{Источник} = {Сделано силами авторов.},
+	]{
+		colspec = {|l|l|l|},
+		row{odd} = {bg = azure8},
+		row{1} = {c, bg = azure3, fg = white, font = \sffamily},
+		rowhead = 1,
+		rowfoot = 0,
+	}
+		\hline
+		$\alpha$ & $\beta$ & $\gamma$ \\
+		\hline
+		$\delta$ & $\epsilon$ & $\zeta$ \\
+		\hline
+		$\eta$ & $\theta$ & $\iota$ \\
+		\hline
+		$\kappa$ & $\lambda$ & $\mu$ \\
+		\hline
+		$\nu$ $\xi$ $o$ & $\pi$ $\rho$ $\sigma$ & $\tau$ $\upsilon$ $\phi$ \\
+		\hline
+	\end{longtblr}
+\end{Verbatim}
+
+\newpage
+
+\hl{Вывод:}
+
+\begin{longtblr}[
+% 	theme = fancy,
+	caption = {Большая таблица, но на самом деле короткая.},
+	entry = {Большая короткая таблица},
+	label = {tblr:bolshaya_tablica_no_na_samom_dele_korotkaya},
+	note{a} = {Это первая сноска.},
+	note{$\dag$} = {Это вторая длинная сноска.},
+	remark{Примечание} = {Некоторые общие примечания.},
+	remark{Источник} = {Сделано силами авторов.},
+	baseline = m,
+]{
+	colspec = {|l|l|l|},
+	row{odd} = {bg = azure8},
+	row{1} = {c, bg = azure3, fg = white, font = \sffamily},
+	rowhead = 1,
+	rowfoot = 0,
+}
+	\hline
+	$\alpha$ & $\beta$ & $\gamma$ \\
+	\hline
+	$\delta$ & $\epsilon$ & $\zeta$ \\
+	\hline
+	$\eta$ & $\theta$ & $\iota$ \\
+	\hline
+	$\kappa$ & $\lambda$ & $\mu$ \\
+	\hline
+	$\nu$ $\xi$ $o$ & $\pi$ $\rho$ $\sigma$ & $\tau$ $\upsilon$ $\phi$ \\
+	\hline
+\end{longtblr}
+
+Здесь мы воспользовались окружением \textsc{longtblr}, если же наша таблица помещается на одной странице, то достаточно использовать окружение \textsc{tblr}. Заметьте, что метку \texttt{label} мы указали в необязательных параметрах (т.е. в \textsc{[ ]} скобках), а не в теле окружения, как это сделано в окружении \textsc{equation}. Пример результата вывода многостраничной таблицы см.~в~прил.
+
+Для листинга программы воспользуемся окурением \textsc{verbatim}, например подключив пакет \textsc{fancyvrb}. В необязательных параметрах окружения \textsc{Verbatim} выберем шрифт \texttt{courier}, размер табуляции равным трём, а номера строк расположим слева:
+{
+\begin{verbatim}
+	\begin{Verbatim}[fontfamily = courier, tabsize = 3, numbers = left, gobble=1]
+	...
+	\end{Verbatim}%
+\end{verbatim}
+}
+В теле окружения прописываем текст исходного кода программы, кроме того можно непосредственно подключать сам файл исходного кода, воспользовавшись командой \textsc{VerbatimInput}, например: \verb|\VerbatimInput[fontfamily=courier, tabsize=3,|\\ \verb|numbers=left, numbersep=6pt]{src/testx3p.f08}|. Данный пакет хоть и прост в освоении, всё же довольно грубо приводит листинг. Для этих целей лучше подходит пакет \textsc{listings}, более специализированный. Им и воспользуемся для оистинга программы далее.
+
+Рассмотрим вставку готового рисунка. Для этого воспользуемся командой\\ \textsc{includegraphics} из пакета \textsc{graphicx}, но поскольку нам необходимо ещё подпись к нему и возможность сослаться, то ещё воспользуемся окружением \textsc{figure}.
+{
+%\lstset{language = [LaTeX]TeX, inputencoding = utf8, frame = none, tabsize = 3, numbers = left, numbersep = 6pt, gobble=1}%
+%\begin{lstlisting}
+\begin{Verbatim}[fontfamily = courier, tabsize = 3, numbers = left, gobble=1]
+	\begin{figure}[H]
+		\center{\includegraphics[width=0.7\linewidth]{c96e01c894dab21d52bb0bd6565f0331.jpg}}
+		\caption{Восстановленная фотография тени чёрной дыры.}
+		\label{fig:vosstanovlennaya_fotografiya_chyornoj_dyry}
+	\end{figure}
+\end{Verbatim}
+}
+\begin{figure}[H]
+	\center{\includegraphics[width=0.7\linewidth]{c96e01c894dab21d52bb0bd6565f0331.jpg}}
+	\caption{Восстановленная фотография тени чёрной дыры.}
+	\label{fig:vosstanovlennaya_fotografiya_chyornoj_dyry}
+\end{figure}
+Обрантим внимание на парамет «[H]» окружения \textsc{figure}. Этот параметр определяет место рисунка в тексте: разрешить алгоритмам ТеХа принять решение исходя из заполненности страницы [h] "хотелось бы картинку здесь"; настойчиво просить разместить после текста [h!] "очень хочу картинку здесь"; и ударить кулаком по столу "--- картинку тут и точка [H] "ХОЧУ картинку здесь и баста"; а с прибавлением буквы "p" мы заставляем поместить ЛаТеХ картинку отдельно на страницу так [pH] "--- см. \url{https://mydebianblog.blogspot.com/2008/12/latex_15.html}.
+
+Теперь попытаемся построить рисунок (графики) с помощью \texttt{gnuplot} и одноимённого с ним окружения из пакета \textsc{gnuplottex}.
+%\begin{Verbatim}[fontfamily = courier, tabsize = 3, numbers = left, gobble=1]
+\lstset{language = Gnuplot, frame = none, tabsize = 3, numbers = left, numbersep = 6pt, gobble=1}%
+\begin{lstlisting}
+	\begin{figure}[h]%
+		\centering%
+		\begin{gnuplot}[terminal = epslatex, terminaloptions = {color dashed}]
+			set key box top left
+			set key width 4
+			set sample 1000
+			set xr [-5:5]
+			set yr [-1:1]
+			set xlabel '$x$-label'
+			set ylabel '$y$-label'
+			plot sin(x) w l lc 1 t '$\sin(x)$',\
+			cos(x) w l lc 2 t '$\cos(x)$',\
+			tan(x) w l lc 3 t '$\tan(x)$',\
+			tanh(x) w l lc 4 t '$5\tanh(x)$'
+		\end{gnuplot}
+		\caption{This is a simple example using the latex-terminal.}%
+		\label{fig:latex}%
+	\end{figure}
+\end{lstlisting}
+
+%\begin{gnuplot}[terminal=pdf,terminaloptions=font ”,10” linewidth 3]
+\begin{figure}[h]%
+	\centering%
+	\begin{gnuplot}[terminal = epslatex, terminaloptions = {color dashed}]
+		set key box top left
+		set key width 4
+		set sample 1000
+		set xr [-5:5]
+		set yr [-1:1]
+		set xlabel '$x$-label'
+		set ylabel '$y$-label'
+		plot sin(x) w l lc 1 t '$\sin(x)$',\
+		cos(x) w l lc 2 t '$\cos(x)$',\
+		tan(x) w l lc 3 t '$\tan(x)$',\
+		tanh(x) w l lc 4 t '$5\tanh(x)$'
+	\end{gnuplot}
+	\caption{Пример работы \texttt{gnuplot}.}%
+	\label{fig:primer_raboty_gnuplot}%
+\end{figure}%
+Для автоматического построения графика средствами \texttt{gnuplot} необходимо также добавить ключ \texttt{shell escape} в команде компиляции tex-файла: \verb|pdflatex --synctex=1 --shell-escape default|.
+
+Расмотрим пример построения блок-схем с использованием пакета \textsc{tikz} с подключёнными библиотеками \textsl{arrows} и \textsl{shapes} перечислив их в \{~\}\nobreak-скобках команды \textsc{usetikzlibrary}, для построения графов же "--- \textsl{graphs}. Описание блок схем помещаются в тело окружения \textsc{tikzpicture}: узлы вводятся и описываюся командой \textsc{node}, а пути - командой \textsc{path}. Пусть нам нужно описать алгоритм программы \texttt{testx3p}, написаной на фортране (см.~директорию~\textsl{app}):
+
+%\VerbatimInput[frame = none, label = {Листинг программы \texttt{testx3p}}, fontfamily = courier, tabsize = 3, numbers = left, numbersep = 6pt]{src/testx3p.f08}%
+\lstset{language = [08]Fortran, frame = none, name = {Листинг программы \texttt{testx3p}}, tabsize = 3, numbers = left, numbersep = 6pt}\lstinputlisting{src/testx3p.f08}%
+
+Для удобства опишем несколько \textsl{tikz}\nobreak-стилей согласно \textbf{ГОСТ 19.701-90 «Схемы алгоритмов программ, данных и систем»} "---~см.~\cite{mkrtumyan:tech:2010:01}, с помощью команды \textsc{tikzset}:
+
+\verb|\tikzset{<имя_стиля>/.style = {<параметры_стиля>}}|.
+
+Используемые стили см.~в исходном tex\nobreak-файле настоящей статьи.
+
+Таким образом,
+
+\tikzset{terminator/.style = {% терминатор - начало или конец любой функции/подпрограммы
+		rectangle, draw, text centered, rounded corners, minimum height = 2em
+	}
+}
+\tikzset{operator/.style = {% блок выполнения операций над данными
+		rectangle, draw, text centered, minimum height = 2em
+	}
+}
+\tikzset{decision/.style = {% блок оператора ветвления
+		diamond, draw, text centered, minimum height = 2em
+	}
+}
+\tikzset{data/.style = {% блок ввода-ввывода данных
+		trapezium, draw, text centered, trapezium left angle = 60,
+		trapezium right angle = 120, minimum height = 2em
+	}
+}
+\tikzset{link/.style = {% связь
+		draw, -latex'
+	}
+}
+\tikzset{connector/.style = {% соединитель, есть штатный стиль "state"
+		circle, draw, text centered, minimum height = 2em
+	}
+}
+\tikzset{function/.style = {% блок вызова внешней функции
+		rectangle split, rectangle split horizontal,
+		rectangle split parts = 3,
+		draw, text centered,
+		minimum width = 5em,
+		minimum height = 2em,
+		outer sep = 0
+	}
+}
+\tikzset{subroutine/.style = {% блок вызова внешней подпрограммы
+		rectangle split, rectangle split horizontal,
+		rectangle split parts = 3,
+		draw, text centered,
+		minimum width = 5em,
+		minimum height = 2em,
+		outer sep = 0
+	}
+}
+\tikzset{procedure/.style = {% блок вызова внешней процедуры
+		rectangle split, rectangle split horizontal,
+		rectangle split parts = 3,
+		draw, text centered,
+		minimum width = 5em,
+		minimum height = 2em,
+		outer sep = 0
+	}
+}
+\tikzset{loop/.style = {% блок-начало цикла с условием
+		chamfered rectangle,
+		chamfered rectangle corners={
+			north west, north east
+		},
+		draw, text centered,
+		minimum width = 5em,
+		minimum height = 2em,
+		outer sep = 0
+	}
+}
+\tikzset{endloop/.style = {% блок-конец цикла с условием
+		chamfered rectangle,
+		chamfered rectangle corners={
+			south west, south east
+		},
+		draw, text centered,
+		minimum width = 5em,
+		minimum height = 2em,
+		outer sep = 0
+	}
+}
+\tikzset{counterloop/.style = {% блок цикла со счётчиком
+		chamfered rectangle,
+		chamfered rectangle xsep = 2cm,
+		draw, text centered,
+		minimum width = 5em,
+		minimum height = 2em,
+		outer sep = 0
+	}
+}
+\tikzset{preparation/.style = {% блок подготовки данных
+		rectangle split, rectangle split horizontal,
+		rectangle split parts = 3,
+		draw, text centered,
+		minimum width = 5em,
+		minimum height = 2em,
+		outer sep = 0
+	}
+}
+
+\begin{tikzpicture}[node distance = 1.7cm, auto]
+	\node [terminator] at (0,0) (start) {\textbf{Начало}};
+	\node [data, below of = start, node distance=1.5cm] (input) {$x$, $y$, $i$, $j$, $n$, массив $p$};
+	\node [operator, below of = input, node distance=1.5cm] (openfile) {Открыть файл \textsl{data.res}, id = n};
+	\node [operator, below of = openfile, node distance=1.5cm] (output1) {Записать {\tt $p[]$} в файл \textsl{data.res}};
+	\node [loop, below of = output1, node distance=1.5cm] (loop) {Главный цикл расчёта \\ $i = \overline{0,20}$};
+	\node [operator, below of = loop, node distance=1.5cm] (calculation) {$x = -1 + i 0,1$};
+	\node [operator, below of = calculation, node distance=1.5cm] (output2) {Записать {\tt $x$, $(x + p_{j})^{3}$ $\forall j = \overline{-4,4}$} в файл \textsl{data.res}};
+	\node [endloop, below of = output2, node distance=1.5cm] (endloop) {Главный цикл расчёта};
+	\node [terminator, below of = endloop, node distance=1.5cm] (end) {\textbf{Конец}};
+	\path [-] (start) edge (input);
+	\path [-] (input) edge (openfile);
+	\path [-] (openfile) edge (output1);
+	\path [-] (output1) edge (loop);
+	\path [-] (loop) edge (calculation);
+	\path [-] (calculation) edge (output2);
+	\path [-] (output2) edge (endloop);
+	\path [-] (endloop) edge (end);
+\end{tikzpicture}
+
+Для случая блок\nobreak-схемы вызова внешней подпрограммы (см.~\url{https://pro-prof.com/archives/1462}) мы используем следующий стиль:
+
+%\lstset{language = [LaTeX]TeX, name = {Пример стиля \texttt{tikz}}, frame = none, tabsize = 3, numbers = left, numbersep = 6pt, gobble=1}%
+%\begin{lstlisting}
+\begin{Verbatim}[fontfamily = courier, tabsize = 3, numbers = left, gobble=1]
+	\tikzset{subroutine/.style = {% блок вызова внешней подпрограммы
+			rectangle split, rectangle split horizontal,
+			rectangle split parts = 3,
+			draw, text centered,
+			minimum width = 5em,
+			minimum height = 2em,
+			outer sep = 0
+		}
+	}%
+	\begin{tikzpicture}
+		\node [subroutine] at (0,0) (subroutine) {\nodepart{two}\textbf{Подпрограмма}};
+	\end{tikzpicture}%
+\end{Verbatim}
+%\end{lstlisting}
+
+\begin{tikzpicture}
+	\node [subroutine] at (0,0) (subroutine) {\nodepart{two}\textbf{Подпрограмма}};
+\end{tikzpicture}
+
+Обратите внимание, что для корректной работы перед содержимым блока в \textsc{node} необходимо прописать \verb|\nodepart{two}|.
+
+Описание tikz\nobreak-стилей (да и других) рекомендуется сохранять в отдельном tex\nobreak-файле и подключать его в преамбуле, или в начале тело документа с помощью команды \textsc{input}.
+
+Построим график из данных расчёта программы \texttt{testx3p}.
+
+
+Результаты расчёта записываются программой в файл \textsl{testx3p.res} в поддиректорию \textsl{data}. После небольшой обработки содержимомго файла под нужды пакета \textsc{tabularray} и записи результата в файл \textsl{tbl1.tex} в поддиректорию \textsl{tables} мы можем представить эти данные в табличной виде:
+
+%{{{ Horrible hack
+
+\ExplSyntaxOn
+% read the file content
+\file_get:nnN {tables/tbl1} {\ExplSyntaxOff} \tblone
+\ExplSyntaxOff
+
+%}}}
+
+\begin{longtblr}[
+% 	theme = fancy,
+	caption = {Результаты расчёта программы \texttt{testx3p}.},
+	entry = {Расчёта программы \texttt{testx3p}.},
+	label = {tblr:rezultaty_raschyota_programmy_testx3p},
+% 	note{a} = {Это первая сноска.},
+% 	note{$\dag$} = {Это вторая длинная сноска.},
+% 	remark{Примечание} = {Некоторые общие примечания.},
+% 	remark{Источник} = {Сделано силами авторов.},
+	baseline = m,
+	expand = \expandafter,
+]{
+	rows = {c},
+	columns = {r},
+	row{odd} = {bg = azure8},
+	row{1} = {m,bg = azure3, fg = white, font = \sffamily},
+	row{1}{1} = {c},
+	rowhead = 1,
+	rowfoot = 0,
+	width=\textwidth,
+	hlines,
+	vlines,
+}
+	%\input{tables/tbl1} % не работает!
+	\expandafter\empty\tblone
+
+\end{longtblr}
+
+Путь к исходному файлу с данными \textsl{testx3p.res} мы пропишем в сам скрипт gnuplot для построения графиков, который сохраним в отдельном файле, а затем подключим его в \TeX\ документ с помощью команды \textsc{gnuplotloadfile}, например \\ \verb|\gnuplotloadfile[<параметры>]{scr/testx3p1.gp}|. Тогда
+\begin{figure}[h]%
+	\centering%
+	\gnuplotloadfile[terminal = epslatex, terminaloptions = {color dashed}]{scr/testx3p1.gp}
+	\caption{Семейство кривых функции $f(x) = (x + p)^{3}$.}%
+	\label{fig:semejstvo_krivyx_funkcii_fx}%
+\end{figure}%
+
+Подробнее этот пример программы на \textsl{фортране} и взаимодействия с \texttt{gnuplot} см.~\cite{shnejvajs:book:2016:01}.
+
+
+
+%% анализ экспериментальных результатов
+
+{\bfseries\itshape Анализ экспериментальных результатов:}
+\label{sec:experimental_result_analysis}
+\addcontentsline{toc}{section}{Анализ экспериментальных результатов~\dotfill~\hspace*{-0.5em}}
+Некоторый анализ\ldots
+
+
+
+%% выводы
+
+{\bfseries\itshape Выводы:}
+\label{sec:conclusions}
+\addcontentsline{toc}{section}{Выводы~\dotfill~\hspace*{-0.5em}}
+В заключении отметим, что данное руководство в большей степени пример; для полнового введения лучше обратиться к справичникам и к указанной литературе. По-началу поттребуется много практики для освоения языка программирования \LaTeX. Вместе с тем \texttt{gnuplot} был выбран из-за простоти в его освоении, и хорошей связки с \LaTeX. Тем не менее, можно строить графики средствами самого \LaTeX а, а именно при помощи того же пакета \textsc{tikz}, использованного для построения блок-схем. Однако рекомендуется сначала освоиться с \textsl{базовым} \LaTeX ом.
+
+
+
+%% список литературы
+
+{\bfseries\itshape \refname:}
+\label{sec:references}
+\addcontentsline{toc}{section}{\refname~\dotfill~\hspace*{-0.5em}}
+%
+%\bibliographystyle{gost7184}
+\bibliography{bib/main}
+
+
+
+\newpage
+
+{\bfseries\itshape Приложение:}
+\label{sec:application}
+\addcontentsline{toc}{section}{Приложение~\dotfill~\hspace*{-0.5em}}
+
+%{{{ Horrible hack
+
+\ExplSyntaxOn
+% read the file content
+\file_get:nnN {tables/tbl2} {\ExplSyntaxOff} \tbltwo
+\ExplSyntaxOff
+
+%}}}
+
+\begin{longtblr}[
+% 	theme = fancy,
+	caption = {Результаты моделирования движения частицы.},
+	entry = {Баллистическое движение частицы.},
+	label = {tblr:rezultaty_modelirovaniya_dvizheniya_chasticy},
+% 	note{a} = {Это первая сноска.},
+% 	note{$\dag$} = {Это вторая длинная сноска.},
+% 	remark{Примечание} = {Некоторые общие примечания.},
+% 	remark{Источник} = {Сделано силами авторов.},
+	baseline = m,
+	expand=\expandafter,
+]{
+	rows = {c},
+	columns = {r},
+	row{odd} = {bg = azure8},
+	row{1-2} = {c, bg = azure3, fg = white, font = \sffamily},
+	rowhead = 2,
+	rowfoot = 0,
+	width=\textwidth,
+	hlines,
+	vlines,
+}
+% 	\hline
+		\SetCell[r = 2]{c} {Время \\ $t$, с}
+			& \SetCell[c = 2]{c} {Координаты}
+				&	& \SetCell[c = 2]{c} {Скорость} & \\
+% 	\hline
+			& $x$, м & $y$, м & $v_{x}$, м/с & $v_{y}$, м/с \\
+% 	\hline
+	%\input{tables/tbl1} % не работает!
+	\expandafter\empty\tbltwo
+
+\end{longtblr}
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% TeX-master: "./default"
+%%% End:
